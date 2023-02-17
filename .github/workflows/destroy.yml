@@ -82,4 +82,4 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform destroy
-      run: terraform destroy
+      run: terraform destroy -auto-approve
