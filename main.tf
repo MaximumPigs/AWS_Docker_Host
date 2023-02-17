@@ -26,7 +26,7 @@ resource "aws_instance" "my_instance" {
   }
 
   network_interface {
-    network_interface_id = aws_network_interface.honeypot_nic
+    network_interface_id = aws_network_interface.honeypot_nic.id
     device_index         = 0
   }
 }
@@ -47,7 +47,7 @@ resource "aws_eip" "public" {
     aws_network_interface.honeypot_nic
   ]
 
-  network_interface         = aws_network_interface.honeypot_nic
+  network_interface         = aws_network_interface.honeypot_nic.id
   associate_with_private_ip = aws_network_interface.honeypot_nic.private_ip
   vpc                       = true
 }
