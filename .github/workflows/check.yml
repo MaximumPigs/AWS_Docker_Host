@@ -45,11 +45,11 @@
 name: 'Terraform-Check'
 
 on:
-  push:
+  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   terraform:
@@ -79,7 +79,7 @@ jobs:
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt
+      run: terraform fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
