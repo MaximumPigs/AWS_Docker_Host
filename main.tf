@@ -50,3 +50,7 @@ resource "aws_eip" "public" {
   associate_with_private_ip = aws_network_interface.honetpot_nic.private_ip
   vpc                       = true
 }
+
+output "public_ip" {
+  value = aws_eip.public.public_ip
+}
