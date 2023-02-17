@@ -6,10 +6,9 @@ terraform {
     }
   }
   backend "s3" {
-    access_key = var.access_key
-    secret_key = var.secret_key
     region = "ap-southeast-2"
     bucket = "terraform-backend-maximumpigs"
+    key = "state/terraform.tfstate"
   }
 }
 
