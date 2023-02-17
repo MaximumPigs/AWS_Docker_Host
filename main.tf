@@ -43,7 +43,8 @@ resource "aws_network_interface" "honetpot_nic" {
 
 resource "aws_eip" "public" {
   depends_on = [
-    aws_internet_gateway.gw
+    aws_internet_gateway.gw,
+    aws_network_interface.honeypot
   ]
 
   network_interface         = aws_network_interface.honetpot_nic.id
