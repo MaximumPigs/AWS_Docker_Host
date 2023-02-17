@@ -32,10 +32,20 @@ resource "aws_instance" "my_instance" {
 }
 
 resource "aws_network_interface" "honetpot_nic" {
-  subnet_id   = aws_subnet.subnet.id
-  private_ips = ["10.0.0.100"]
+  subnet_id  = aws_subnet.subnet.id
+  private_ip = "10.0.0.100"
 
   tags = {
     "name" = "primary_network_interface"
   }
+}
+
+resource "aws_eip" "public" {
+  depends_on = [
+    aws_internet_gateway.gw
+  ]
+
+  network_interface         = aws_network_interface.honetpot_nic.id
+  associate_with_private_ip = aws_network_interface.honetpot_nic.private_ip
+  vpc                       = true
 }
