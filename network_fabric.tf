@@ -25,7 +25,7 @@ resource "aws_security_group" "security_group" {
     from_port   = 22
     cidr_blocks = ["${var.my_ip}/32"]
     to_port     = 22
-    protocol    = "ssh"
+    protocol    = "tcp"
   }
 
   egress {
