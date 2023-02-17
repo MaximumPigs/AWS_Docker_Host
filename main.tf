@@ -17,7 +17,6 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_instance" {
-  name          = "testing"
   ami           = "ami-0dfcb1ef8550277af"
   instance_type = "t2.micro"
   key_name      = "MaximumPigs_Key_Pair"
