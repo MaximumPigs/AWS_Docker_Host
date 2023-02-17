@@ -46,7 +46,8 @@ name: 'Terraform-Check'
 
 on:
   push:
-  workflow_dispatch:
+    branches: [ "main" ]
+  pull_request:
 
 permissions:
   contents: read
