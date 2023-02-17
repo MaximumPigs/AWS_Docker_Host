@@ -26,14 +26,13 @@ resource "aws_instance" "my_instance" {
   }
 
   network_interface {
-    network_interface_id = aws_network_interface.honetpot_nic.id
+    network_interface_id = aws_network_interface.honeypot_nic.id
     device_index         = 0
   }
 }
 
-resource "aws_network_interface" "honetpot_nic" {
+resource "aws_network_interface" "honeypot_nic" {
   subnet_id       = aws_subnet.subnet.id
-  private_ip      = "10.0.0.100"
   security_groups = ["${aws_security_group.security_group.id}"]
 
   tags = {
@@ -43,11 +42,12 @@ resource "aws_network_interface" "honetpot_nic" {
 
 resource "aws_eip" "public" {
   depends_on = [
-    aws_internet_gateway.gw
+    aws_internet_gateway.gw,
+    aws_network_interface.honeypot_nic
   ]
 
-  network_interface         = aws_network_interface.honetpot_nic.id
-  associate_with_private_ip = aws_network_interface.honetpot_nic.private_ip
+  network_interface         = aws_network_interface.honeypot_nic.id
+  associate_with_private_ip = aws_network_interface.honeypot_nic.private_ip
   vpc                       = true
 }
 
