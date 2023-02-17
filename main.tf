@@ -33,7 +33,6 @@ resource "aws_instance" "my_instance" {
 
 resource "aws_network_interface" "honeypot_nic" {
   subnet_id       = aws_subnet.subnet.id
-  private_ip      = "10.0.0.100"
   security_groups = ["${aws_security_group.security_group.id}"]
 
   tags = {
