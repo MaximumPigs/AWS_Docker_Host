@@ -7,5 +7,5 @@ variable "key_pair" {
 # network information
 
 variable "my_ip" {
-  type = list(string)
+  type = string
 }

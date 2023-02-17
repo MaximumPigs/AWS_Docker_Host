@@ -23,7 +23,7 @@ resource "aws_security_group" "security_group" {
   ingress {
     description = "SSH from my IP"
     from_port   = 22
-    cidr_blocks = var.my_ip
+    cidr_blocks = ["${var.my_ip}/32"]
     to_port     = 22
     protocol    = "ssh"
   }
