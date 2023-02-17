@@ -1,9 +1,9 @@
-variable "access_key" {
+variable "AWS_ACCESS_KEY_ID" {
   type      = string
   sensitive = true
 }
 
-variable "secret_key" {
+variable "AWS_SECRET_ACCESS_KEY" {
   type      = string
   sensitive = true
 }
