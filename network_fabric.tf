@@ -23,6 +23,23 @@ resource "aws_subnet" "subnet" {
   }
 }
 
+resource "aws_route_table" "route" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block = aws_vpc.vpc.cidr_block
+  }
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+  tags = {
+    name = "Honeypot Route"
+  }
+}
+
 resource "aws_security_group" "security_group" {
   name        = "honeypot_security_group"
   description = "firewall rules for honeypot"
