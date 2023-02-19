@@ -24,7 +24,7 @@ resource "aws_subnet" "subnet" {
 }
 
 resource "aws_default_route_table" "route" {
-  default_route_table_id = aws_vpc.vpc.default_route_table_id.id
+  default_route_table_id = aws_vpc.vpc.default_route_table_id
 
   route {
     cidr_block = aws_vpc.vpc.cidr_block
