@@ -28,7 +28,7 @@ resource "aws_default_route_table" "route" {
 
   route {
     cidr_block = aws_vpc.vpc.cidr_block
-    gateway_id = "local"
+    gateway_id = aws_internet_gateway.gw.id
   }
 
   route {

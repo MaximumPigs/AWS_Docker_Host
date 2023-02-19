@@ -17,6 +17,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_instance" {
+  depends_on = [
+    aws_network_interface.honeypot_nic
+  ]
+
   ami           = "ami-0692dea0a2f8a1b35"
   instance_type = "t2.micro"
   key_name      = var.key_pair
@@ -43,7 +47,7 @@ resource "aws_network_interface" "honeypot_nic" {
 resource "aws_eip" "public" {
   depends_on = [
     aws_internet_gateway.gw,
-    aws_network_interface.honeypot_nic
+    aws_instance.my_instance
   ]
 
   network_interface         = aws_network_interface.honeypot_nic.id
