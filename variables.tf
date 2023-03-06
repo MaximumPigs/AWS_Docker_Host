@@ -9,13 +9,3 @@ variable "key_pair" {
 variable "my_ip" {
   type = string
 }
-
-# routes
-
-variable "routes" {
-  type = list(object({
-    name    = string
-    type    = string
-    records = list(string)
-  }))
-}
