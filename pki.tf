@@ -1,4 +1,4 @@
-resource "tls_key_pair" "terraform" {
+resource "tls_private_key" "terraform" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
