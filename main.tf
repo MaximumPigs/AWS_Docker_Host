@@ -21,7 +21,7 @@ resource "aws_instance" "my_instance" {
     aws_network_interface.honeypot_nic
   ]
 
-  ami           = "ami-0692dea0a2f8a1b35"
+  ami           = "ami-08f0bc76ca5236b20"
   instance_type = "t2.micro"
   key_name      = var.key_pair
 
@@ -34,7 +34,7 @@ resource "aws_instance" "my_instance" {
     device_index         = 0
   }
 
-  #  user_data_base64 = base64encode(file("cloudinit/userdata.tmpl"))
+  user_data_base64 = base64encode(file("cloudinit/userdata.tmpl"))
 }
 
 resource "aws_network_interface" "honeypot_nic" {
