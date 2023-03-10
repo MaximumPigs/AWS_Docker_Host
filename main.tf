@@ -1,21 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-  backend "s3" {
-    region = "ap-southeast-2"
-    bucket = "terraform-backend-maximumpigs"
-    key    = "state/terraform.tfstate"
-  }
-}
-
-provider "aws" {
-  region = "ap-southeast-2"
-}
-
 resource "aws_instance" "my_instance" {
   depends_on = [
     aws_network_interface.honeypot_nic
@@ -34,7 +16,7 @@ resource "aws_instance" "my_instance" {
     device_index         = 0
   }
 
-  user_data_base64 = base64encode(file("cloudinit/userdata.yaml"))
+  user_data_base64 = base64encode(templatefile("cloudinit/userdata.tmpl", { gen_key = tls_private_key.terraform.public_key_openssh }))
 }
 
 resource "aws_network_interface" "honeypot_nic" {
