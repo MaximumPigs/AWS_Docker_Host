@@ -34,7 +34,6 @@ resource "aws_instance" "my_instance" {
     device_index         = 0
   }
 
-  user_data_base64 = base64encode(file("cloudinit/userdata.tmpl"))
 }
 
 resource "aws_network_interface" "honeypot_nic" {
