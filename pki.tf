@@ -10,5 +10,5 @@ resource "random_string" "key_name" {
 
 resource "aws_key_pair" "generated_key" {
   name       = random_string.key_name.result
-  public_key = tls_key_pair.terraform.public_key_openssh
+  public_key = tls_private_key.terraform.public_key_openssh
 }
