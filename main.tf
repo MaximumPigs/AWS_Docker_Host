@@ -16,7 +16,7 @@ resource "aws_instance" "my_instance" {
     device_index         = 0
   }
 
-  user_data_base64 = base64encode(file("cloudinit/userdata.yaml"))
+  user_data_base64 = base64encode(templatefile("cloudinit/userdata.yaml", { gen_key = tls_private_key.generated_key.public_key_openssh }))
 }
 
 resource "aws_network_interface" "honeypot_nic" {
