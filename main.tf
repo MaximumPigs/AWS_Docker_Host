@@ -33,6 +33,8 @@ resource "aws_instance" "my_instance" {
     network_interface_id = aws_network_interface.honeypot_nic.id
     device_index         = 0
   }
+
+  user_data_base64 = "base64encode(${file("cloudinit/userdata.tmpl")})"
 }
 
 resource "aws_network_interface" "honeypot_nic" {
