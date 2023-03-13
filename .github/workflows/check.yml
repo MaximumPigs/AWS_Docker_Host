@@ -83,5 +83,5 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    - name: Terraform Check
-      run: terraform check -auto-approve -backend-config="backend.hcl"
+    - name: Terraform Plan
+      run: terraform plan -auto-approve -backend-config="backend.hcl"
