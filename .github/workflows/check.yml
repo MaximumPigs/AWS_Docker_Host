@@ -96,3 +96,7 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      
+    outputs:
+      TF_VAR_public_ip: ${{ outputs.public_ip }}
+      TF_VAR_secret_key_id: ${{ outputs.secret_key_id }}
