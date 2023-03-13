@@ -51,13 +51,10 @@ on:
     secrets:
       MY_IP:
         required: true
-        type: string
       AWS_ACCESS_KEY:
         required: true
-        type: string
       AWS_SECRET_KEY:
         required: true
-        type: string
 
 permissions:
   contents: read
