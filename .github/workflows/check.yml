@@ -84,4 +84,4 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -auto-approve -backend-config="backend.hcl"
+      run: terraform plan -backend-config="backend.hcl"
